@@ -9,10 +9,8 @@ require 'active_support/core_ext/class/attribute'
 # Usage
 #
 #   # in application.rb
-#    require 'saddlebag'
 #   config.controller.asset_host = Saddlebag::AssetHost.new
 #
-#   # in config/initializer/saddlebag.rb
 #   Saddlebag::AssetHost.configure do |a|
 #     a.enabled = true
 #     a.asset_host = 'http://assets%d.example.com'
