@@ -4,17 +4,9 @@ Saddlebag is a Rail 3+ configuration toolkit.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+No surprises:
 
     gem 'saddlebag'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install saddlebag
 
 ## Usage
 
