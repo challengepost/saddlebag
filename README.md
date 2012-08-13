@@ -28,16 +28,16 @@ makes easy to point your assets to add multiple subdomains, secure asset hosts
 and gracefully handle asset pipeline compilation.
 
 ```ruby
-  # application.rb
-  require 'saddlebag'
-  config.action_controller.asset_host = Saddlebag::AssetHost.new
+# application.rb
+require 'saddlebag'
+config.action_controller.asset_host = Saddlebag::AssetHost.new
 
-  # config/initializer/saddlebag.rb
-  Saddlebag::AssetHost.configure do |a|
-    a.enabled = true
-    a.asset_host = 'http://assets%d.example.com'
-    a.secure_asset_host = 'https://secureassets.example.com'
-  end
+# config/initializer/saddlebag.rb
+Saddlebag::AssetHost.configure do |a|
+  a.enabled = true
+  a.asset_host = 'http://assets%d.example.com'
+  a.secure_asset_host = 'https://secureassets.example.com'
+end
 ```
 
 ## Contributing
