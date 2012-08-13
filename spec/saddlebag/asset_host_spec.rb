@@ -21,9 +21,9 @@ describe Saddlebag::AssetHost do
   context "enabled" do
     before do
       Saddlebag::AssetHost.stub!(
-        enabled: true,
-        secure_asset_host: "https://secureassets.example.com",
-        asset_host: "http://assets%d.example.com"
+        :enabled => true,
+        :secure_asset_host => "https://secureassets.example.com",
+        :asset_host => "http://assets%d.example.com"
       )
     end
 
@@ -72,9 +72,9 @@ describe Saddlebag::AssetHost do
   describe "settings from hash" do
     before do
       Saddlebag::AssetHost.configure({
-              enabled: true,
-              asset_host: "http://assets.example.com",
-              secure_asset_host: "https://secureassets.example.com"
+              :enabled => true,
+              :asset_host => "http://assets.example.com",
+              :secure_asset_host => "https://secureassets.example.com"
             })
     end
 
