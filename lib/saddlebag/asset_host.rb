@@ -1,5 +1,24 @@
 require 'active_support/core_ext/class/attribute'
 
+# Public:
+# Pick an asset host for the given source and request. Returns nil if no request is
+# given or not host is provided in settings, the host if no wildcard is set,
+# the host interpolated with the numbers 0-3 if it contains %d (the number is
+# the source hash mod 4) or the value returned from invoking call.
+#
+# Usage
+#
+#   # in application.rb
+#    require 'saddlebag'
+#   config.controller.asset_host = Saddlebag::AssetHost.new
+#
+#   # in config/initializer/saddlebag.rb
+#   Saddlebag::AssetHost.configure do |a|
+#     a.enabled = true
+#     a.asset_host = 'http://assets%d.example.com'
+#     a.secure_asset_host = 'https://secureassets.example.com'
+#   end
+#
 module Saddlebag
   class AssetHost
     class_attribute :enabled, :asset_host, :secure_asset_host
@@ -11,10 +30,6 @@ module Saddlebag
       yield self if block_given?
     end
 
-    # Pick an asset host for the given source and request. Returns nil if no request is
-    # given or not host is provided in settings, the host if no wildcard is set,
-    # the host interpolated with the numbers 0-3 if it contains %d (the number is
-    # the source hash mod 4) or the value returned from invoking call.
     def call(*args)
       source, request = args
 
