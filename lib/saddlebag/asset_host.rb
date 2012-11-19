@@ -1,4 +1,5 @@
 require 'active_support/core_ext/class/attribute'
+require 'ostruct'
 
 # Public:
 # Pick an asset host for the given source and request. Returns nil if no request is
@@ -30,9 +31,10 @@ module Saddlebag
 
     def call(*args)
       source, request = args
+      request ||= mock_request
 
       case
-      when skip?(request)
+      when skip?
         nil
       when request.ssl?
         secure_asset_host
@@ -53,8 +55,12 @@ module Saddlebag
       asset_host % (source.hash % 4)
     end
 
-    def skip?(request)
-      request.nil? || !self.class.enabled
+    def skip?
+      !self.class.enabled
+    end
+
+    def mock_request
+      OpenStruct.new(ssl?: false)
     end
 
   end
