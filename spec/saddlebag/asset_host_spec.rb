@@ -27,9 +27,9 @@ describe Saddlebag::AssetHost do
       )
     end
 
-    it "returns hashed asset host when called with no request" do
-      subject.call(source).should =~ %r{http://assets\d.example.com}
-      subject.call(source, nil).should =~ %r{http://assets\d.example.com}
+    it "returns nil when called with no request" do
+      subject.call(source).should be_nil
+      subject.call(source, nil).should be_nil
     end
 
     it "returns https host when request is ssl" do
